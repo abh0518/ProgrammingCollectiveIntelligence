@@ -62,19 +62,20 @@ public class GeneticTest {
 	public void mutationTest(){
 		System.out.println("*** mutation ***");
 		int sample = sampler.getSample();
-		System.out.println(mutation.mutate(sample));
+		System.out.println(Integer.toBinaryString(sample));
+		System.out.println(Integer.toBinaryString(mutation.mutate(sample)));
 		sample = sampler.getSample();
-		System.out.println(sample);
-		System.out.println(mutation.mutate(sample));
+		System.out.println(Integer.toBinaryString(sample));
+		System.out.println(Integer.toBinaryString(mutation.mutate(sample)));
 		sample = sampler.getSample();
-		System.out.println(sample);
-		System.out.println(mutation.mutate(sample));
+		System.out.println(Integer.toBinaryString(sample));
+		System.out.println(Integer.toBinaryString(mutation.mutate(sample)));
 		sample = sampler.getSample();
-		System.out.println(sample);
-		System.out.println(mutation.mutate(sample));
+		System.out.println(Integer.toBinaryString(sample));
+		System.out.println(Integer.toBinaryString(mutation.mutate(sample)));
 		sample = sampler.getSample();
-		System.out.println(sample);
-		System.out.println(mutation.mutate(sample));
+		System.out.println(Integer.toBinaryString(sample));
+		System.out.println(Integer.toBinaryString(mutation.mutate(sample)));
 	}
 	
 	@Test
@@ -89,7 +90,8 @@ public class GeneticTest {
 	@Test 
 	public void geneticOptimizeTest(){
 		System.out.println("*** genericOptimize ***");
-		List<Integer> result = genetic.geneticOptimize(20000, 100, 0.2, 0.2);
+		List<Integer> result = genetic.geneticOptimize(2000, 1000, 0.2f, 0.2f);
+		System.out.println();
 		System.out.println(result);
 	}
 	

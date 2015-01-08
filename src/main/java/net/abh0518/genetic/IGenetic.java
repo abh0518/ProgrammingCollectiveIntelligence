@@ -17,5 +17,5 @@ public interface IGenetic<T> {
 	 * @param mutationProb 돌연변이가 발생할 확률, 0.1이나 0.2 등으로 백분율 소수로 표현 한다.
 	 * @return
 	 */
-	List<T> geneticOptimize(int genSize, int maxLoop, double eliteRate, double mutationProb);
+	List<T> geneticOptimize(int genSize, int maxLoop, float eliteRate, float mutationProb);
 }

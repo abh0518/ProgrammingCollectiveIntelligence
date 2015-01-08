@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Random;
 
 import net.abh0518.genetic.ICrossover;
+import net.abh0518.genetic.IEvaluator;
 import net.abh0518.genetic.IGenetic;
 import net.abh0518.genetic.IMutation;
 import net.abh0518.genetic.ISampler;
-import net.abh0518.genetic.IEvaluator;
 
 
 public class Genetic<T> implements IGenetic<T> {
@@ -28,7 +28,7 @@ public class Genetic<T> implements IGenetic<T> {
 		this.crossover = crossover;
 	}
 	
-	private List<T> evolveGeneration(List<T> generation, double eliteRate, double mutationProb){
+	private List<T> evolveGeneration(List<T> generation, float eliteRate, float mutationProb){
 		this.sortByScore(generation);
 		int genSize = generation.size();
 		
@@ -37,9 +37,8 @@ public class Genetic<T> implements IGenetic<T> {
 		
 		rand.nextDouble();
 		
-		int prob = (int)(mutationProb*100);
 		for(int i = eliteCount ; i < genSize; i++){
-			boolean isMutation = rand.nextInt(101) < prob? true : false;
+			boolean isMutation = Math.abs(rand.nextFloat()) < mutationProb ? true : false;
 			if(isMutation){
 				//돌연변이 생성
 				int mutationIndex = rand.nextInt(eliteCount);
@@ -57,7 +56,7 @@ public class Genetic<T> implements IGenetic<T> {
 		return generation;
 	}
 	
-	public List<T> geneticOptimize(int genSize, int maxLoop, double eliteRate, double mutationProb){
+	public List<T> geneticOptimize(int genSize, int maxLoop, float eliteRate, float mutationProb){
 		List<T> generation = new ArrayList<T>();
 		for(int i = 0 ; i < genSize ; i++){
 			generation.add(sampler.getSample());
@@ -106,4 +105,5 @@ public class Genetic<T> implements IGenetic<T> {
 	public void setEvaluator(IEvaluator<T> evaluator) {
 		this.evaluator = evaluator;
 	}
+
 }
